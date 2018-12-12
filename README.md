@@ -83,6 +83,10 @@ So, putting this all together we have...
 
 *T(n) = T(n / 2) + &#920;(1) + &#920;(1)
 
-*     *= T(n / 2) = &#920;(1)*
+*= T(n / 2) + &#920;(1)*
+
+*= T(n / 2) + c* where *T(1) = c*
+
+
 
 
