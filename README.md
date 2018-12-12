@@ -64,4 +64,12 @@ A recurrence relation can be defined to represent binary search as follows...
 
 *T(n) = aT(n / b) + D(n) + C(n)*
 
-Assume *T(1) = &#920;(1)*
+Assume *T(1) = &#920;(1) = c*
+
+Let *D(n)* be the cost to divide and *C(n)* be the cost to compare.
+
+*D(n) = &#8970;(low + high) / 2&#8971; = &#920;(1) = c*
+
+Where *low* and *high* are the respective indices corresponding to the sub-arrays within each level of recursion.
+
+
