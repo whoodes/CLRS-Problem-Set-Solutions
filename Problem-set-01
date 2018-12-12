@@ -1,0 +1,11 @@
+Linear seach pseudocode:
+
+LinearSearch(A, n, v)
+  for i = 0 to n - 1
+    if A[i] == v
+      return i
+  return NIL
+  
+Loop Invariant:
+
+At the start of each iteration of the loop, the array A[0..i - 1] does not contain the value v.
