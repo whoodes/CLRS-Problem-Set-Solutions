@@ -72,4 +72,11 @@ Let *D(n)* be the cost to divide and *C(n)* be the cost to compare.
 
 Where *low* and *high* are the respective indices corresponding to the sub-arrays within each level of recursion.
 
+It is easy to see *C(n) = &#920;(1)*, as only a single key comparison occurs in the array A<sub>k</sub> within the *kth* call
+to *T(n)*.
+
+For the values of *a* and *b*, binary search divides the problem in half, working on only one of the resulting halves. So, we have...
+
+*a = 1 and b = 2*
+
 
