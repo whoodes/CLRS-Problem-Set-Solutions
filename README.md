@@ -25,7 +25,8 @@ When the for loop is read, *i* = 0, thus the sub-array A' is empty.  Therefore t
 
 **Maintenance:** 
 
-With each iteration, assume A'[0..*i* - 1] does not contain *v*, if A[*i*] == *v*, *i* is returned.  Otherwise, *i* = *i* + 1.  So, we have... 
+With each iteration, assume A'[0..*i* - 1] does not contain *v*, if A[ *i* ] == *v*, *i* is returned.  Otherwise, *i* = *i* +
+1.  So, we have... 
 
 *i* - 1 = (*i* - 1) + 1
 
@@ -35,7 +36,7 @@ Therefore the invariant is maintained.
 
 **Termination:**
 
-if *i* = *n* - 1 and A[*i*] != *v*, then *i* = *n* and the loop exits.  Because the invariant was maintained, the sub-array 
+if *i* = *n* - 1 and A[ *i* ] != *v*, then *i* = *n* and the loop exits.  Because the invariant was maintained, the sub-array 
 A'[0..*i* - 1] does not contain *v*, but *i* = *n*.  So, we have...
 
 *i* - 1 = *n* - 1
