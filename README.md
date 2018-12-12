@@ -2,8 +2,21 @@
 
 ## Table of Contents
 * [Problem Set 01](#problem-set-01)
+  * [Linear Search](#linear-search)
+  * [Binary Search](#binary-search)
+  
+This is a collection of course work, mostly consisting of problems taken from the CLRS MIT Press textbook.  The algorithms
+course was completed in December of 2018.  This repository is a demonstration of my own personal understanding of the
+material covered.  There are a total of eleven problem sets in all.
+
 
 ### Problem set 01
+
+A collection of loop invariant proofs, as well as a recurrence tree proof.  The algorithms involved in this problem set include:
+
+- linear search
+- binary search
+- bubble sort
 
 #### Linear Search
 
@@ -41,6 +54,8 @@ A'[*0..i - 1*] does not contain *v*, but *i* = *n*.  So, we have...
 
 *i - 1 = n - 1*
 
-Therefore A[*0..n - 1*] does not contain *v*
+Therefore A[*0..n - 1*] does not contain *v*.
 
 QED
+
+#### Binary Search
