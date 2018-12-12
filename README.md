@@ -85,8 +85,32 @@ So, putting this all together we have...
 
 *= T(n / 2) + &#920;(1)*
 
-*= T(n / 2) + c* where *T(1) = c*
+*= T(n / 2) + c* 
 
+Where *c = T(1)*
+
+If defined as a recurrence tree, binary search could be thougt of as a path from the root to a single leaf, as only one edge
+per level is traversed.
+
+Or, *c + c + ... + c
+
+*= c(1 + 1 + ... + 1)
+
+Claim: *c(1 + 1 + ... + 1) = log<sub>2</sub>(n) + 1
+
+Proof:
+
+Base case: *n = 1*
+
+Hypothesis: *The levels of a tree with 2<sup>i</sup> leaves = *log<sub>2</sub>(2<sup>i</sup>) + 1 = i + 1
+
+Let *n = 2<sup>i + 1</sup>*
+
+*log<sub>2</sub>(2<sup>i + 1</sup>) + 1 = i + 1 + 1*
+
+*(i + 1)log<sub>2</sub>2 + 1 = i + 2*
+
+*i + 2 = i + 2*
 
 
 
