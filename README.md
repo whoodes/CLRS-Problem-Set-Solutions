@@ -89,16 +89,16 @@ So, putting this all together we have...
 
 Where *c = T(1)*
 
-If defined as a recurrence tree, binary search could be thougt of as a path from the root to a single leaf, as only one edge
+If defined as a recurrence tree, binary search could be thought of as a path from the root to a single leaf, as only one edge
 per level is traversed.
 
-Or, *c + c + ... + c
+Or, *c + c + ... + c*
 
-*= c(1 + 1 + ... + 1)
+*= c(1 + 1 + ... + 1)*
 
-Claim: *c(1 + 1 + ... + 1) = log<sub>2</sub>(n) + 1
+**Claim:** *c(1 + 1 + ... + 1) = log<sub>2</sub>(n) + 1*
 
-Proof:
+**Proof:**
 
 Base case: *n = 1*
 
@@ -112,5 +112,14 @@ Let *n = 2<sup>i + 1</sup>*
 
 *i + 2 = i + 2*
 
+**Therefore** in the worst case, binary search has a constant cost, *c*, *log<sub>2</sub>(n) + 1* times, or...
+
+*c(log<sub>2</sub>(n) + 1)*
+
+*= clog<sub>2</sub>(n) + c*
+
+*= &#920;(log<sub>2</sub>(n))
+
+**QED**
 
 
