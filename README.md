@@ -18,7 +18,7 @@ A collection of loop invariant proofs, as well as a recurrence tree proof.  The 
 - binary search
 - bubble sort
 
-#### Linear Search
+### Linear Search
 
 ```
 LinearSearch(A, n, v)
@@ -58,4 +58,10 @@ Therefore A[*0..n - 1*] does not contain *v*.
 
 QED
 
-#### Binary Search
+### Binary Search
+
+A recurrence relation can be defined to represent binary search as follows...
+
+*T(n) = aT(n / b) + D(n) + C(n)*
+
+Assume *T(1) = Theta(1)
