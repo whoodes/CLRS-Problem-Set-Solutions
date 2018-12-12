@@ -103,7 +103,7 @@ Or, *c + c + ... + c*
 
 Base case: *n = 1*
 
-Hypothesis: *The levels of a tree with 2<sup>i</sup> leaves = *log<sub>2</sub>(2<sup>i</sup>) + 1 = i + 1
+Hypothesis: *The levels of a tree with 2<sup>i</sup> leaves = *log<sub>2</sub>(2<sup>i</sup>) + 1 = i + 1*
 
 Let *n = 2<sup>i + 1</sup>*
 
