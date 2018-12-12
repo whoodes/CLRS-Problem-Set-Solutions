@@ -4,6 +4,7 @@
 * [Problem Set 01](#problem-set-01)
   * [Linear Search](#linear-search)
   * [Binary Search](#binary-search)
+  * [Bubble Sort](#bubble-sort)
   
 This is a collection of course work, mostly consisting of problems taken from the CLRS MIT Press textbook.  The algorithms
 course was completed in December of 2018.  This repository is a demonstration of my own personal understanding of the
@@ -121,5 +122,7 @@ Let *n = 2<sup>i + 1</sup>*
 *= &#920;(log<sub>2</sub>(n))*
 
 **QED**
+
+### Bubble Sort
 
 
