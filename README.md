@@ -64,4 +64,4 @@ A recurrence relation can be defined to represent binary search as follows...
 
 *T(n) = aT(n / b) + D(n) + C(n)*
 
-Assume *T(1) = Theta(1)
+Assume *T(1) = Theta(1)*
