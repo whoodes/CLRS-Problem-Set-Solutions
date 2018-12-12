@@ -10,7 +10,7 @@ course was completed in December of 2018.  This repository is a demonstration of
 material covered.  There are a total of eleven problem sets in all.
 
 
-### Problem set 01
+## Problem set 01
 
 A collection of loop invariant proofs, as well as a recurrence tree proof.  The algorithms involved in this problem set include:
 
