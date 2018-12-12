@@ -118,7 +118,7 @@ Let *n = 2<sup>i + 1</sup>*
 
 *= clog<sub>2</sub>(n) + c*
 
-*= &#920;(log<sub>2</sub>(n))
+*= &#920;(log<sub>2</sub>(n))*
 
 **QED**
 
