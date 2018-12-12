@@ -17,30 +17,30 @@ LinearSearch(A, n, v)
 
 **Loop invariant:** 
 
-At the start of each iteration of the for loop, the sub-array A'[0..*i* - 1] does not contain the value *v*.
+At the start of each iteration of the for loop, the sub-array A'[*0..i - 1*] does not contain the value *v*.
 
 Initialization: 
 
-When the for loop is read, *i* = 0, thus the sub-array A' is empty.  Therefore the invariant is vacuously true.
+When the for loop is read, *i = 0*, thus the sub-array A' is empty.  Therefore the invariant is vacuously true.
 
 **Maintenance:** 
 
-With each iteration, assume A'[0..*i* - 1] does not contain *v*, if A[ *i* ] == *v*, *i* is returned.  Otherwise, *i* = *i* +
-1.  So, we have... 
+With each iteration, assume A'[0..*i* - 1] does not contain *v*, if A[ *i* ] == *v*, *i* is returned.  Otherwise, *i = i +
+1*.  So, we have... 
 
-*i* - 1 = (*i* - 1) + 1
+*i - 1 = (i - 1) + 1*
 
-*i* - 1 = *i*
+*i - 1 = i*
 
 Therefore the invariant is maintained.
 
 **Termination:**
 
 if *i* = *n* - 1 and A[ *i* ] != *v*, then *i* = *n* and the loop exits.  Because the invariant was maintained, the sub-array 
-A'[0..*i* - 1] does not contain *v*, but *i* = *n*.  So, we have...
+A'[*0..i - 1*] does not contain *v*, but *i* = *n*.  So, we have...
 
-*i* - 1 = *n* - 1
+*i - 1 = n - 1*
 
-Therefore A[0..*n* - 1] does not contain *v*
+Therefore A[*0..n - 1*] does not contain *v*
 
 QED
