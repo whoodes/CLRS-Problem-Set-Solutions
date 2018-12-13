@@ -16,6 +16,8 @@ material covered.  There are a total of eleven problem sets in all.
 
 ## Problem set 01
 
+[Back to top](#table-of-contents)
+
 A collection of loop invariant proofs, as well as a recurrence tree proof.  The algorithms involved in this problem set
 include:
 
@@ -229,6 +231,8 @@ Which is equivalent to...
 In our implementaiton we can make this a tight bound of &#920;(n<sup>2</sup>) because no optimization takes place.
 
 ## Problem Set 02
+
+[Back to top](#table-of-contents)
 
 A collection of asymptotic proofs, in regard to defining a handful of functions into sets of **O**, &#920;, &#937;,
 as well as **o**, &#952;, &#969;.  We will also take a brief look into binary trees, along with an anaylsis of a
