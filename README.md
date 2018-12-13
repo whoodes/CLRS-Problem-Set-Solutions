@@ -140,4 +140,29 @@ Let *n = 2<sup>i + 1</sup>*
 
 ### Bubble Sort
 
+One of the main benefits of bubble sort is early termination if no 'bubbling' occurs.  In this example, no such consideration
+is taken.
+
+```
+BubbleSort(A)
+  for i = 1 to A.length - 1
+    for j = A.length downto i + 1
+      if A[j] < A[j - 1]
+        exchange A[j] with A[j - 1]
+```
+
+This implementation also takes a 'bubble down' approach.  Our proof will attack the inner loop first, working our way out.
+
+**Loop Invariant:**
+
+At the start of each iteration of the inner loop, the element A[ *j* ] &#8804; A[*j + 1*].
+
+**Initialization:**
+
+When the loop begins, *j* = A.length, because no element exists at A[*j + 1*] the invariant is vacuously true.
+
+**Maintenance:**
+
+With each successive iteration, if A[ *j* ] &#60; A[*j - 1*] then the values are exchanged.  Because *j* is decremented,
+*j* = *j - 1*.  Therefore the exchange results in A[ *j* ] &#8804; A[*j + 1*] by susbstituting the values of *j*
 
