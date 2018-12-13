@@ -227,6 +227,7 @@ In our implementaiton we can make this a tight bound of &#920;(n<sup>2</sup>) be
 
 ## Problem Set 02
 
-A collection of asymptotic proofs, in regard to defining a handful of functions into sets of **O**, &#920;, and &#937;.
-As well as **o**, &#952;, &#969;.
+A collection of asymptotic proofs, in regard to defining a handful of functions into sets of **O**, &#920;, &#937;,
+as well as **o**, &#952;, &#969;.  We will also take a brief look into binary trees, along with an anaylsis of a
+merge-insertion sort hybrid algorithm.
 
