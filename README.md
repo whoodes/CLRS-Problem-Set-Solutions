@@ -6,6 +6,9 @@
   * [Binary Search](#binary-search)
   * [Bubble Sort](#bubble-sort)
 * [Problem Set 02](#problem-set-02)
+  * [Asymptotic Analysis](#asymptotic-analysis)
+  * [Print Binary Tree](#print-binary-tree)
+  * [Merge-Insertion Sort](#merge-insertion-sort)
   
 This is a collection of course work, mostly consisting of problems taken from the CLRS MIT Press textbook.  The algorithms
 course was completed in December of 2018.  This repository is a demonstration of my own personal understanding of the
@@ -187,7 +190,7 @@ The loop begins with *i* = 1, thus the invariant vacuously holds for an array of
 **Maintenance:**
 
 With each iteration of the outer loop, we showed that termination of the inner loop results in A[ *i* ] &#8804; A[*i + 1*].
-Each pass then increments *i*, resulting in *i* = *i + 1*, but this means A[*i - 1] &#8804; A[ *i* ].  Therefore A' is
+Each pass then increments *i*, resulting in *i* = *i + 1*, but this means A[*i - 1*] &#8804; A[ *i* ].  Therefore A' is
 maintained.
 
 **Termination:**
@@ -230,4 +233,6 @@ In our implementaiton we can make this a tight bound of &#920;(n<sup>2</sup>) be
 A collection of asymptotic proofs, in regard to defining a handful of functions into sets of **O**, &#920;, &#937;,
 as well as **o**, &#952;, &#969;.  We will also take a brief look into binary trees, along with an anaylsis of a
 merge-insertion sort hybrid algorithm.
+
+### Asymptotic Analysis
 
