@@ -5,19 +5,22 @@
   * [Linear Search](#linear-search)
   * [Binary Search](#binary-search)
   * [Bubble Sort](#bubble-sort)
+* [Problem Set 02](#problem-set-02)
   
 This is a collection of course work, mostly consisting of problems taken from the CLRS MIT Press textbook.  The algorithms
 course was completed in December of 2018.  This repository is a demonstration of my own personal understanding of the
 material covered.  There are a total of eleven problem sets in all.
 
-
-## Problem set 01
-
-A collection of loop invariant proofs, as well as a recurrence tree proof.  The algorithms involved in this problem set include:
+**Problem set 01** is a collection of loop invariant proofs, as well as a recurrence tree proof.  The algorithms involved in this problem set include:
 
 - linear search
 - binary search
 - bubble sort
+
+**Problem set 02**
+
+
+## Problem set 01
 
 ### Linear Search
 
@@ -221,4 +224,6 @@ Which is equivalent to...
 = *(n<sup>2</sup> - n) / 2*
 
 = *O(n<sup>2</sup>)*
+
+In our implementaiton we can make this a tight bound of &#920;(n<sup>2</sup>) because no optimization takes place.
 
