@@ -164,5 +164,61 @@ When the loop begins, *j* = A.length, because no element exists at A[*j + 1*] th
 **Maintenance:**
 
 With each successive iteration, if A[ *j* ] &#60; A[*j - 1*] then the values are exchanged.  Because *j* is decremented,
-*j* = *j - 1*.  Therefore the exchange results in A[ *j* ] &#8804; A[*j + 1*] by susbstituting the values of *j*
+*j* = *j - 1*.  Therefore the exchange results in A[ *j* ] &#8804; A[*j + 1*] by susbstituting the values of *j*.
+
+**Termination:**
+
+When *j* = *i + 1*, the comparison taking place occurs between *j* and *i* because *i* = *j - 1*.  When *j* is decremented
+once more, the loop exits with *j* = *i*.  The invariant was maintained, thus by substitution...
+
+A[ *i* ] &#8804; A[*i + 1*]
+
+Let us now use this result to prove correctness of the outer loop...
+
+**Loop Invariant:**
+
+The Array A' consists of the elements A[*1..i*] such that A'[ 1 ] &#8804; A'[ 2 ] &#8804; ... &#8804; A'[ *i* ]
+
+**Initialization:**
+
+The loop begins with *i* = 1, thus the invariant vacuously holds for an array of size one.
+
+**Maintenance:**
+
+With each iteration of the outer loop, we showed that termination of the inner loop results in A[ *i* ] &#8804; A[*i + 1*].
+Each pass then increments *i*, resulting in *i* = *i + 1*, but this means A[*i - 1] &#8804; A[ *i* ].  Therefore A' is
+maintained.
+
+**Termination:**
+
+When *i* = A.length the loop exits.  Maintenance shows that A'[ 1 ] &#8804; A'[ 2 ] &#8804; ... &#8804; A'[ *i* ], but 
+*i* = A.length.  Therefor A'[1..A.length] is the output.
+
+QED
+
+**Analysis:**
+
+In the worst case, the inner loop iterates *n - (i + 1) + 1* or *n - i* times in relation to the outer loop.
+
+So,
+
+*i = 1 : j = n - 1*
+
+*i = 2 : j = n - 2*
+
+.
+.
+.
+
+*i = n - 1 : j = 1*
+
+Which is equivalent to...
+
+*(n - 1) + (n - 2) + (n - 3) + ... + 1*
+
+= *n(n - 1) / 2*
+
+= *(n<sup>2</sup> - n) / 2*
+
+= *O(n<sup>2</sup>)*
 
