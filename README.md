@@ -61,6 +61,21 @@ QED
 
 ### Binary Search
 
+```
+BinarySearch(x, A, min, max)
+  low = min
+  high = max
+  while low <= high
+    mid = floor( (low + high) / 2 )
+    if x < A[mid]
+      high = mid - 1
+    else if x > A[mid]
+      high = mid + 1
+    else
+      return mid
+  return NIL
+```
+
 A recurrence relation can be defined to represent binary search as follows...
 
 *T(n) = aT(n / b) + D(n) + C(n)*
@@ -82,7 +97,7 @@ For the values of *a* and *b*, binary search divides the problem in half, workin
 
 So, putting this all together we have...
 
-*T(n) = T(n / 2) + &#920;(1) + &#920;(1)
+*T(n) = T(n / 2) + &#920;(1) + &#920;(1)*
 
 *= T(n / 2) + &#920;(1)*
 
@@ -97,7 +112,7 @@ Or, *c + c + ... + c*
 
 *= c(1 + 1 + ... + 1)*
 
-**Claim:** *c(1 + 1 + ... + 1) = log<sub>2</sub>(n) + 1*
+**Claim:** *c(1 + 1 + ... + 1) = c(log<sub>2</sub>(n) + 1)*
 
 **Proof:**
 
