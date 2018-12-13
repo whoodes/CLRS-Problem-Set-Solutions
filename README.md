@@ -14,7 +14,7 @@ This is a collection of course work, mostly consisting of problems taken from th
 course was completed in December of 2018.  This repository is a demonstration of my own personal understanding of the
 material covered.  There are a total of eleven problem sets in all.
 
-**Problem sets are currently in the process of being transmogrified into this GitHub page**
+**Note to reader: Problem sets are currently in the process of being transmogrified into this GitHub page.**
 
 ## Problem set 01
 
