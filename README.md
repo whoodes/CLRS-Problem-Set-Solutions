@@ -242,3 +242,21 @@ merge-insertion sort hybrid algorithm.
 
 ### Asymptotic Analysis
 
+|      f(n)       |       g(n)        |  O    |   o   |   &#937;   |   &#969;   |   &#920;   |
+| :-------------: | :-------------:   | :---: | :---: | :--------: | :--------: | :--------: |
+| 4n<sup>2</sup>  | 4<sup>lgn</sup>   | 1     |   0   |   1        |   0        |   1        |
+| 2<sup>lgn</sup> | lg<sup>2</sup>n   | 0     |   0   |   1        |   1        |   0        |
+| n<sup>1/2</sup> | n<sup>sin n</sup> | 0     |   0   |   0        |   0        |   0        |
+
+
+The following simple mathematical proofs will serve as confirmation for the above table.
+For every proof, we assume  *c* and *n* &#8712; R, and that each holds 
+&#8704;n | n 	&#8805; n<sub>0</sub> with n<sub>0</sub> &#8805; 0.
+
+##### Row 1
+
+Let *f(n) = 4n<sup>2</sup> and g(n) = 4<sup>lgn</sup>*
+
+Assume *f(n) = O( g(n) )*
+
+Then 0 &#8804; *f(n)* &#8804; *cg(n)*
