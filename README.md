@@ -253,10 +253,63 @@ The following simple mathematical proofs will serve as confirmation for the abov
 For every proof, we assume  *c* and *n* &#8712; R, and that each holds 
 &#8704;n | n 	&#8805; n<sub>0</sub> with n<sub>0</sub> &#8805; 0.
 
-##### Row 1
+#### Row 1
+
+**Big-O / Little-o**
 
 Let *f(n) = 4n<sup>2</sup> and g(n) = 4<sup>lgn</sup>*
 
 Assume *f(n) = O( g(n) )*
 
 Then 0 &#8804; *f(n)* &#8804; *cg(n)*
+
+4n<sup>2</sup> &#8804; c4<sup>lgn</sup>
+
+&#8804; c(2<sup>2</sup>)<sup>lgn</sup>
+
+&#8804; c2<sup>2lgn</sup>
+
+&#8804; c2<sup>lgn<sup>2</sup></sup>
+
+&#8804; cn<sup>2</sup>
+
+So,
+
+0 &#8804; 4n<sup>2</sup> &#8804; cn<sup>2</sup>
+
+Let *c* = 4 and *n<sub>0</sub>* = 1
+
+&#8756; *f(n) = O( g(n) )*
+
+We can easily show that little-o does not apply here as Big-O was proved by showing equality 
+of *f* and *g*.
+
+&#8756; *f(n) &#8800; o( g(n) )*
+
+**Big-Omega / Little-omega**
+
+Assume *f(n)* = &#937;( g(n) )
+
+Then 0 &#8804; *cg(n)* &#8804; *f(n)*
+
+We can easily show this by the equality shown in the Big-O proof.
+
+&#8756; *f(n) = &#937;( g(n) )*
+
+Similarly to little-o, the equality of *f* and *g* proves *f(n) &#8800; &#969;( g(n) )*
+
+**Big-Theta**
+
+Assume *f(n) = &#920;( g(n) )*
+
+Then 0 &#8804; *c<sub>1</sub>g(n)* &#8804; *f(n)* &#8804; *c<sub>2</sub>g(n)*
+
+Let  *c<sub>1</sub>* = *c<sub>2</sub>* = 4 and *n<sub>0</sub>* = 1
+
+We have, 0 &#8804; *4n<sup>2</sup>* &#8804; *4n<sup>2</sup>* &#8804; *4n<sup>2</sup>*
+
+&#8756; *f(n) = &#920;( g(n) )*
+
+QED
+
+#### Row 2
