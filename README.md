@@ -408,3 +408,16 @@ public class BinaryTree {
   }
 }
 ```
+
+**Analysis**
+
+The algorithm works in **O**(n) time.  The while loop takes a TreeNode as the root and prints it.
+Each subsequent node is pushed on the stack.  For a pre-order traversal, the left child is pushed
+after the right, given the first-in last-out nature of a stack. So, every right sub-tree is appended
+until all left sub-roots have been popped and printed.  The stack then maintains the order of 
+visitation within the tree.  Thus, we have *n* nodes entering the stack, with each node being 
+operated on in **O**(1) time.
+
+&#8756; PrintBinaryTreeNodes operates in **O**(n) time.
+
+
