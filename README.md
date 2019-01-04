@@ -313,3 +313,59 @@ We have, 0 &#8804; *4n<sup>2</sup>* &#8804; *4n<sup>2</sup>* &#8804; *4n<sup>2</
 QED
 
 #### Row 2
+
+**Big-O / little-o**
+
+Let *f(n) = 2<sup>lgn</sup> and g(n) = lg<sup>2</sup>n*
+
+Assume *f(n)* = *O( g(n) )*
+
+Then 0 &#8804; *2<sup>lgn</sup>* &#8804; *clg<sup>2</sup>n*
+
+2<sup>lgn</sup> = n
+
+lg( 2<sup>lgn</sup> ) = lg(n)
+
+lg(n) * lg(2) = lg(n)
+
+lg(n) = lg(n)
+
+n = n
+
+So we have,
+
+0 &#8804; *n* &#8804; *clg<sup>2</sup>n*
+
+But any linear function will grow faster than any logarithmic function given large
+enough values of *n*.
+
+&#8756; *f(n)* &#8800; *O( g(n) )*
+
+If *f(n)* &#8800; *O( g(n) )* then it is certainly not *o( g(n) )*.
+
+That is, *f(n)* &#8805; *cg(n)* where *c* = 1 and &#8704;*n* | *n* &#8805; 16
+
+&#8756; *f(n)* &#8800; *o( g(n) )*
+
+**Big-Omega / little-omega**
+
+Assume *f(n)* = &#937;( g(n) )
+
+Let *c* = 1 and *n<sub>0</sub>* = 16
+
+Then 0 &#8804; *lg<sup>2</sup>n* &#8804; *n* holds true &#8704;*n* &#8805; 16
+
+&#8756; *f(n)* = &#937;( g(n) )
+
+**Big-Theta**
+
+Because *f(n)* &#8800; O( *g(n)* ) *f(n)* cannot be tightly bounded by *g(n)*
+
+&#8756; *f(n)* &#8800; &#920;( *g(n)* )
+
+QED
+
+#### Row 3
+
+The functions, *&#8730;n* and *n<sup>sin(n)</sup>*, are not asymptotically comparable because
+the exponent of the sinusoidal function *n<sup>sin(n)</sup>* oscillates between the values 1 and -1. 
