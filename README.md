@@ -359,7 +359,7 @@ Then 0 &#8804; *lg<sup>2</sup>n* &#8804; *n* holds true &#8704;*n* &#8805; 16
 
 **Big-Theta**
 
-Because *f(n)* &#8800; O( *g(n)* ) *f(n)* cannot be tightly bounded by *g(n)*
+Because *f(n)* &#8800; O( *g(n)* ), *f(n)* cannot be tightly bounded by *g(n)*.
 
 &#8756; *f(n)* &#8800; &#920;( *g(n)* )
 
@@ -369,3 +369,40 @@ QED
 
 The functions, *&#8730;n* and *n<sup>sin(n)</sup>*, are not asymptotically comparable because
 the exponent of the sinusoidal function *n<sup>sin(n)</sup>* oscillates between the values 1 and -1. 
+
+### Print Binary Tree
+[Back to top](#table-of-contents)
+
+Below is a non-recursive pre-order traversal of a binary tree written in Java.  The traversal
+prints each node using a stack as an auxiliary data structure. We assume the tree consists of
+objects of the class *TreeNode*.  We also assume the *toString* method has been overridden to
+print that data from the node in a desirable format.
+
+```java
+public class BinaryTree {
+  
+  // Assume class member variable and methods
+  
+  private PrintBinaryTreeNodes(TreeNode root) { 
+    if (root == null) {
+      return;
+    }   
+    
+    Stack<TreeNode> treeStack = new Stack<>();
+    treeStack.push(root);
+       
+    while (!stack.isEmpty()) {
+      TreeNode node = treeStack.pop();
+      node.toString();
+         
+      if (node.right != null) {
+        treeStack.push(node.right);
+      }
+         
+      if (node.left != null) {
+        treeStack.push(node.left);
+      }
+    }
+  }
+}
+```
