@@ -8,7 +8,7 @@
 * [Problem Set 02](#problem-set-02)
   * [Asymptotic Analysis](#asymptotic-analysis)
   * [Print Binary Tree](#print-binary-tree)
-  * [Merge-Insertion Sort](#merge-insertion-sort)
+  * [Merge Insertion Sort](#merge-insertion-sort)
   
 This is a collection of course work, mostly consisting of problems taken from the CLRS MIT Press textbook.  The algorithms
 course was completed in December of 2018.  This repository is a demonstration of my own personal understanding of the
@@ -420,4 +420,17 @@ operated on in **O**(1) time.
 
 &#8756; PrintBinaryTreeNodes operates in **O**(n) time.
 
+### Merge Insertion Sort
+[Back to Top](#table-of-contents)
 
+The idea for a hybridization of merge sort and insertion sort depends on the fact that, given
+a small enough list size, insertion sort outperforms merge sort.  Insertion sort can also sort
+in-place, giving it an advantage when implemented on most machines.  The idea then is to coarsen 
+the leaves of the merge sort recursion tree by calling insertion sort when the list size becomes
+sufficiently small.
+
+Let us take a set of *n* elements and split it into *k* subsets of length *n* / *k*.
+
+We are then sorting a set of *k* elements *n* / *k* times, or...
+
+<img src="https://latex.codecogs.com/gif.latex?n/k&space;\sum_{i=2}^{k}&space;i&space;=&space;n/k&space;\sum_{j=1}^{k}&space;(j-1)" title="n/k \sum_{i=2}^{k} i = n/k \sum_{j=1}^{k} (j-1)" />
