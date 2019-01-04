@@ -9,6 +9,10 @@
   * [Asymptotic Analysis](#asymptotic-analysis)
   * [Print Binary Tree](#print-binary-tree)
   * [Merge Insertion Sort](#merge-insertion-sort)
+* [Problem Set 03](#problem-set-03)
+  * [Expected Length of a Coding Scheme](#expected-length-of-a-coding-scheme)
+  * [Hashing with Chaining](#hashing-with-chaining)
+  * [Open Addressing Strategies](#open-addressing-strategies)
   
 This is a collection of course work, mostly consisting of problems taken from the CLRS MIT Press textbook.  The algorithms
 course was completed in December of 2018.  This repository is a demonstration of my own personal understanding of the
@@ -427,7 +431,13 @@ The idea for a hybridization of merge sort and insertion sort depends on the fac
 a small enough list size, insertion sort outperforms merge sort.  Insertion sort can also sort
 in-place, giving it an advantage when implemented on most machines.  The idea then is to coarsen 
 the leaves of the merge sort recursion tree by calling insertion sort when the list size becomes
-sufficiently small.
+sufficiently small.  We will show the time-complexity in two parts, then find a bound for values
+ of *k*...
+
+##### Claim: 
+Insertion sort can sort *n* / *k* sub-lists, each of length *k*, in &#920;(*nk*)
+
+##### Proof:
 
 Let us take a set of *n* elements and split it into *k* subsets of length *n* / *k*.
 
@@ -443,3 +453,58 @@ We are then sorting a set of *k* elements *n* / *k* times, or...
 <br>
 <br>
 <img src="https://latex.codecogs.com/gif.latex?=&space;\Theta(nk)" title="= \Theta(nk)" />
+<br>
+<br>
+
+In terms of a recursion tree, merge sort originally bottoms out when the length of the set is 1. 
+Instead, we are now bottoming out when the set has a length of size *n* / *k*, or...
+
+<img src="https://latex.codecogs.com/gif.latex?T(n)&space;=&space;2T(\frac{n}{2k})&space;&plus;&space;cn" title="T(n) = 2T(\frac{n}{2k}) + cn" />
+<br>
+<br>
+
+Thus, the height of the hybridized recursion tree is *lg* (*n* / *k*) + 1, with a cost of *cn* at 
+each level.
+
+So, T(n) = *cn* ( *lg* (*n* / *k*) + 1 )
+
+= &#920;( *n* *lg* (*n* / *k*) )
+
+Putting these two results together, we have the total cost of our algorithm as the sum of the
+constituent parts...
+
+&#920;( *nk* + *n* *lg* (*n* / *k*) )
+
+**A bound on the value of *k***
+
+It is easy to see that if *k* were larger than O(*lgn*) than the value of *k* would become more
+than a constant factor.
+
+This can be shown by substituting the bound on *k* into our hybrid's complexity equation, and as 
+result, simplifying back to the original time-complexity for merge sort.
+
+Let *k* = O( *lgn* ) = *lgn*
+
+&#920;( *n lgn* + *n* *lg* (*n* / *lgn*) )
+
+*n* / *lgn* must certainly grow slower than *n*, thus the leading expression dominates.
+
+This results in &#920;( *n lgn* ).
+
+QED
+
+#### IRL
+
+Constants pertaining to the particular instances of the algorithms, the languages they are written
+in, and the machines they will be running on all affect performance.  As such, using our analytical
+findings in conjunction with performance testing would give us an optimal solution for *k*.
+
+We could simply run a series of tests, setting the value of *k* to the upper bound we found through
+analysis.  We then run the sort, decrementing the value of *k* with each test case.  After which,
+we then analyze the data looking for the optimal value for the length of the sub-lists.
+
+## Problem Set 03
+
+### Expected Length of a Coding Scheme
+
+*Coming soon*
