@@ -433,4 +433,13 @@ Let us take a set of *n* elements and split it into *k* subsets of length *n* / 
 
 We are then sorting a set of *k* elements *n* / *k* times, or...
 
-<img src="https://latex.codecogs.com/gif.latex?n/k&space;\sum_{i=2}^{k}&space;i&space;=&space;n/k&space;\sum_{j=1}^{k}&space;(j-1)" title="n/k \sum_{i=2}^{k} i = n/k \sum_{j=1}^{k} (j-1)" />
+<img src="https://latex.codecogs.com/gif.latex?\frac{n}{k}&space;\sum_{i=2}^{k}&space;i&space;=&space;\frac{n}{k}&space;\sum_{j=1}^{k}&space;(j-1)" title="\frac{n}{k} \sum_{i=2}^{k} i = \frac{n}{k} \sum_{j=1}^{k} (j-1)" />
+<br>
+<br>
+<img src="https://latex.codecogs.com/gif.latex?=&space;\frac{n}{k}&space;*&space;\frac{k(k&plus;1)}{2}-1" title="= \frac{n}{k} * \frac{k(k+1)}{2}-1" />
+<br>
+<br>
+<img src="https://latex.codecogs.com/gif.latex?=&space;\frac{n(k&plus;1)}{2}-1" title="= \frac{n(k+1)}{2}-1" />
+<br>
+<br>
+<img src="https://latex.codecogs.com/gif.latex?=&space;\Theta(nk)" title="= \Theta(nk)" />
