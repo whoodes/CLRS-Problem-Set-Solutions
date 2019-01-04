@@ -29,7 +29,7 @@ include:
 
 ### Linear Search
 
-```
+```asp
 LinearSearch(A, n, v)
   for i = 0 to n - 1
     if A[i] == v
@@ -41,7 +41,7 @@ LinearSearch(A, n, v)
 
 At the start of each iteration of the for loop, the sub-array A'[*0..i - 1*] does not contain the value *v*.
 
-Initialization: 
+**Initialization:**
 
 When the for loop is read, *i = 0*, thus the sub-array A' is empty.  Therefore the invariant is vacuously true.
 
@@ -69,7 +69,7 @@ QED
 
 ### Binary Search
 
-```
+```asp
 BinarySearch(x, A, min, max)
   low = min
   high = max
@@ -151,7 +151,7 @@ Let *n = 2<sup>i + 1</sup>*
 One of the main benefits of bubble sort is early termination if no 'bubbling' occurs.  In this example, no such consideration
 is taken.
 
-```
+```asp
 BubbleSort(A)
   for i = 1 to A.length - 1
     for j = A.length downto i + 1
@@ -163,29 +163,29 @@ This implementation also takes a 'bubble down' approach.  Our proof will attack 
 
 **Loop Invariant:**
 
-At the start of each iteration of the inner loop, the element A[ *j* ] &#8804; A[*j + 1*].
+At the start of each iteration of the inner loop, the element A[ *j* ] &#8804; A[ *j + 1* ].
 
 **Initialization:**
 
-When the loop begins, *j* = A.length, because no element exists at A[*j + 1*] the invariant is vacuously true.
+When the loop begins, *j* = A.length, because no element exists at A[ *j + 1* ] the invariant is vacuously true.
 
 **Maintenance:**
 
-With each successive iteration, if A[ *j* ] &#60; A[*j - 1*] then the values are exchanged.  Because *j* is decremented,
-*j* = *j - 1*.  Therefore the exchange results in A[ *j* ] &#8804; A[*j + 1*] by susbstituting the values of *j*.
+With each successive iteration, if A[ *j* ] &#60; A[ *j - 1* ] then the values are exchanged.  Because *j* is decremented,
+*j* = *j - 1*.  Therefore the exchange results in A[ *j* ] &#8804; A[ *j + 1* ] by susbstituting the values of *j*.
 
 **Termination:**
 
 When *j* = *i + 1*, the comparison taking place occurs between *j* and *i* because *i* = *j - 1*.  When *j* is decremented
 once more, the loop exits with *j* = *i*.  The invariant was maintained, thus by substitution...
 
-A[ *i* ] &#8804; A[*i + 1*]
+A[ *i* ] &#8804; A[ *i + 1* ]
 
 Let us now use this result to prove correctness of the outer loop...
 
 **Loop Invariant:**
 
-The Array A' consists of the elements A[*1..i*] such that A'[ 1 ] &#8804; A'[ 2 ] &#8804; ... &#8804; A'[ *i* ]
+The Array A' consists of the elements A[ *1..i* ] such that A'[ 1 ] &#8804; A'[ 2 ] &#8804; ... &#8804; A'[ *i* ]
 
 **Initialization:**
 
@@ -193,8 +193,8 @@ The loop begins with *i* = 1, thus the invariant vacuously holds for an array of
 
 **Maintenance:**
 
-With each iteration of the outer loop, we showed that termination of the inner loop results in A[ *i* ] &#8804; A[*i + 1*].
-Each pass then increments *i*, resulting in *i* = *i + 1*, but this means A[*i - 1*] &#8804; A[ *i* ].  Therefore A' is
+With each iteration of the outer loop, we showed that termination of the inner loop results in A[ *i* ] &#8804; A[ *i + 1* ].
+Each pass then increments *i*, resulting in *i* = *i + 1*, but this means A[ *i - 1* ] &#8804; A[ *i* ].  Therefore A' is
 maintained.
 
 **Termination:**
@@ -215,7 +215,9 @@ So,
 *i = 2 : j = n - 2*
 
 .
+
 .
+
 .
 
 *i = n - 1 : j = 1*
@@ -230,14 +232,14 @@ Which is equivalent to...
 
 = ***O**(n<sup>2</sup>)*
 
-In our implementaiton we can make this a tight bound of &#920;(n<sup>2</sup>) because no optimization takes place.
+In our implementation we can make this a tight bound of &#920;(n<sup>2</sup>) because no optimization takes place.
 
 ## Problem Set 02
 
 [Back to top](#table-of-contents)
 
 A collection of asymptotic proofs, in regard to defining a handful of functions into sets of **O**, &#920;, &#937;,
-as well as **o**, &#952;, &#969;.  We will also take a brief look into binary trees, along with an anaylsis of a
+as well as **o**, &#952;, &#969;.  We will also take a brief look into binary trees, along with an analysis of a
 merge-insertion sort hybrid algorithm.
 
 ### Asymptotic Analysis
@@ -343,7 +345,7 @@ enough values of *n*.
 
 If *f(n)* &#8800; *O( g(n) )* then it is certainly not *o( g(n) )*.
 
-That is, *f(n)* &#8805; *cg(n)* where *c* = 1 and &#8704;*n* | *n* &#8805; 16
+That is, *f(n)* &#8805; *cg(n)* where *c* = 1 and &#8704;*n* : *n* &#8805; 16
 
 &#8756; *f(n)* &#8800; *o( g(n) )*
 
@@ -373,7 +375,7 @@ the exponent of the sinusoidal function *n<sup>sin(n)</sup>* oscillates between 
 ### Print Binary Tree
 [Back to top](#table-of-contents)
 
-Below is a non-recursive pre-order traversal of a binary tree written in Java.  The traversal
+Below is a non-recursive pre-order traversal of a binary tree, written in Java.  The traversal
 prints each node using a stack as an auxiliary data structure. We assume the tree consists of
 objects of the class *TreeNode*.  We also assume the *toString* method has been overridden to
 print that data from the node in a desirable format.
@@ -381,9 +383,9 @@ print that data from the node in a desirable format.
 ```java
 public class BinaryTree {
   
-  // Assume class member variable and methods
+  // Assume TreeNode class, member variables and methods
   
-  private PrintBinaryTreeNodes(TreeNode root) { 
+  private void PrintBinaryTreeNodes(TreeNode root) { 
     if (root == null) {
       return;
     }   
