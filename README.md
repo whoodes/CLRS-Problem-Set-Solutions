@@ -12,11 +12,16 @@
 * [Problem Set 03](#problem-set-03)
   * [Expected Length of a Coding Scheme](#expected-length-of-a-coding-scheme)
   * [Hashing with Chaining](#hashing-with-chaining)
-  * [Open Addressing Strategies](#open-addressing-strategies)
+  * [Skip Lists](#skip-lists)
+* [Problem Set 04](#problem-set-04)
+  * [Master Method](#master-method)
   
-This is a collection of course work, mostly consisting of problems taken from the CLRS MIT Press textbook.  The algorithms
-course was completed in December of 2018.  This repository is a demonstration of my own personal understanding of the
-material covered.  There are a total of eleven problem sets in all.
+This is a collection of course work, mostly consisting of problems taken from the CLRS MIT Press
+textbook.  The algorithms course was completed in December of 2018.  This repository is a 
+demonstration of my own personal understanding of the material covered.  There are a total of 
+eleven problem sets in all.  The first half deals mainly with a slightly more mathematically 
+rigorous look into some classic data structures and algorithms.  Then we'll dive into a more 
+exciting domain (graphs!) and explore more awesome concepts! 
 
 **Note to reader: Problem sets are currently in the process of being transmogrified into this GitHub page.**
 
@@ -504,6 +509,7 @@ analysis.  We then run the sort, decrementing the value of *k* with each test ca
 we then analyze the data looking for the optimal value for the length of the sub-lists.
 
 ## Problem Set 03
+[Back to Top](#table-of-contents)
 
 ### Expected Length of a Coding Scheme
 
@@ -574,6 +580,7 @@ With this scheme we have the equation...
 = 1.9*n*
 
 ### Hashing with Chaining
+[Back top Top](#table-of-contents)
 
 We now consider a hash table with *m* slots that uses chaining for collision resolution.
 With the table initially empty, we will find the probability that a chain of size *k* exists
@@ -589,4 +596,70 @@ The probability of a key mapping to some slot is 1 / *m*.  The following *k* - 1
 also map to the same slot. 
 
 &#8756; X<sub>k</sub> = 1 / *m*<sup>k - 1</sup> 
+
+*Working on a way to format hash tables in an aesthetically pleasing way, until then this
+section will be somewhat bare...*
+
+### Skip Lists
+(*coming soon! Again with the aesthetics...*)
+
+## Problem Set 04
+[Back top Top](#table-of-contents)
+
+In this problem set we will tackle a few recurrence relations using the Master
+Method.  For one of those relations, we will use our findings from the MM to
+use as our guess within the substitution method.  Where will see that 
+sometimes less really is more!
+
+After, we'll take deeper look into binary search trees. We will first prove
+a basic lemma by showing that the individual parts are true.  Then we'll run
+through an exercise in modifying a deletion algorithm.  Finishing up with an 
+algorithm to construct a balanced binary search tree along with a time
+complexity analysis.
+
+### Master Method
+**T(n) = 2 T( *n* / 4 ) + &#8730;*n***
+
+*a* = 2 ; *b* = 4 ; *f* (*n*) = *n*<sup>1/2</sup>
+
+But *n*<sup>log<sub>4</sub>2</sup> = *n*<sup>1/2</sup>
+
+So, in the relation we can express *f* as an element of the set
+&#920;( n<sup>log<sub>b</sub>a</sup> ).  By case 2 of the master theorem,
+this tells us that T(*n*) = &#920;(&#8730;*n* * lg*n*).
+
+QED
+
+**T(n) = 3 T( *n* / 9 ) + *n*<sup>3</sup>**
+
+*a* = 3 ; *b* = 9 ; *f* (*n*) = *n*<sup>3</sup>
+
+*n*<sup>log<sub>9</sub>3</sup> = *n*<sup>1/2</sup>
+
+So, we have the cost at each level of the recurrence tree as an element of the set 
+&#937;( *n*<sup>1/2 + &#949;</sup> ) where &#949; = 5 / 2.
+
+When using a lower bound on our cost function , we must perform a check according to 
+the method:
+ 
+ *a* *f* ( *n* / *b* ) &#8804; *c* *f* (*n*) for some *c* &#60; 1 and 
+sufficiently large values of *n*.
+
+3 ( n / 9 )<sup>3</sup> &#8804; *c* *f* (*n*)
+
+3 ( n / 3<sup>2</sup> )<sup>3</sup> &#8804;
+
+( 3n<sup>3</sup> / 3<sup>6</sup> ) &#8804;
+
+( n<sup>3</sup> / 3<sup>5</sup> ) &#8804; *c* *n*<sup>3</sup>
+
+We can arbitrarily choose *c* = 1 / 3
+
+&#8756; T(n) = &#920;( *n*<sup>3</sup> )
+
+QED
+
+**T(n) = 7 T( *n* / 3 ) + *n***
+
+*a* = 7 ; *b* = 3 ; *f* (*n*) = *n*
 
