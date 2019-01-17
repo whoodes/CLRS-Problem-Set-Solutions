@@ -15,6 +15,8 @@
   * [Skip Lists](#skip-lists)
 * [Problem Set 04](#problem-set-04)
   * [Master Method](#master-method)
+  * [Substitution](#substitution)
+  * [Binary Search Tree Proof](#binary-search-tree-proof)
   
 This is a collection of course work, mostly consisting of problems taken from the CLRS MIT Press
 textbook.  The algorithms course was completed in December of 2018.  This repository is a 
@@ -618,7 +620,7 @@ algorithm to construct a balanced binary search tree along with a time
 complexity analysis.
 
 ### Master Method
-**T(n) = 2 T( *n* / 4 ) + &#8730;*n***
+**T(*n*) = 2 T( *n* / 4 ) + &#8730;*n***
 
 *a* = 2 ; *b* = 4 ; *f* (*n*) = *n*<sup>1/2</sup>
 
@@ -630,7 +632,7 @@ this tells us that T(*n*) = &#920;(&#8730;*n* * lg*n*).
 
 QED
 
-**T(n) = 3 T( *n* / 9 ) + *n*<sup>3</sup>**
+**T(*n*) = 3 T( *n* / 9 ) + *n*<sup>3</sup>**
 
 *a* = 3 ; *b* = 9 ; *f* (*n*) = *n*<sup>3</sup>
 
@@ -655,11 +657,50 @@ sufficiently large values of *n*.
 
 We can arbitrarily choose *c* = 1 / 3
 
-&#8756; T(n) = &#920;( *n*<sup>3</sup> )
+&#8756; T(*n*) = &#920;( *n*<sup>3</sup> )
 
 QED
 
-**T(n) = 7 T( *n* / 3 ) + *n***
+**T(*n*) = 7 T( *n* / 3 ) + *n***
 
 *a* = 7 ; *b* = 3 ; *f* (*n*) = *n*
+
+n<sup>log<sub>3</sub>7</sup> &#62; *n*
+
+So, *f* (*n*) = O (n<sup>log<sub>3</sub>7 - &#949;</sup>) for some constant &#949; &#62; 0
+
+&#8756; T(*n*) = &#920;( n<sup>log<sub>3</sub>7</sup> ) by case 3 of the Master Theorem.
+
+### Substitution
+[Back to Top](#table-of-contents)
+
+Here, we will use the above result from the relation...
+**T(*n*) = 7 T( *n* / 3 ) + *n*** as our guess.
+
+Guess: T(*n*) = &#920;( n<sup>log<sub>3</sub>7</sup> )
+
+We must show that 0 &#8804; c*n*<sup>log<sub>3</sub>7</sup> &#8804; T(*n*) 	&#8804; 
+cn<sup>log<sub>3</sub>7</sup>
+
+0 &#8804; c( *n* / 3 )<sup>log<sub>3</sub>7</sup> + *n* &#8804; T(*n*) 	&#8804; 
+c( *n* / 3 )<sup>log<sub>3</sub>7</sup> + *n*
+
+0 &#8804; c( *n* )<sup>log<sub>3</sub>7</sup> + *n* &#8804; T(*n*) 	&#8804; 
+c( *n* )<sup>log<sub>3</sub>7</sup> + *n*
+
+This is where our attempt breaks down as there is no way to remove *n* from
+the inequality as to match our guess.
+
+Let's instead guess T(n) = &#920;( n<sup>log<sub>3</sub>7</sup> ) - *dn*
+
+0 &#8804; c( *n* )<sup>log<sub>3</sub>7</sup> + *n* - *dn* &#8804; T(*n*) &#8804; 
+c( *n* )<sup>log<sub>3</sub>7</sup> + *n* - *dn* 
+
+Thus when *d* = 1 our inequality holds.
+
+QED
+
+### Binary Search Tree Proof
+[Back to Top](#table-of-contents)
+
 
