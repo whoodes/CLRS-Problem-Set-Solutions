@@ -507,4 +507,86 @@ we then analyze the data looking for the optimal value for the length of the sub
 
 ### Expected Length of a Coding Scheme
 
-*Coming soon*
+This simple exercise will look at the expected bit-length of 3 character encoding schemes.
+The set of characters for all of these cases is: {A, B, C, D, E}.  The first scheme uses a 3-bit 
+encoding for all 5 characters, i.e., 
+
+A => 001
+
+B => 010
+
+C => 011
+
+D => 100
+
+E => 101
+
+The characters in our set occur with the following probabilities:
+
+Pr[A] = 0.3 ; Pr[B] = 0.3 ; Pr[C] = 0.2 ; Pr[D] = 0.1 ; Pr[E] = 0.1
+
+Let X<sub>n</sub> be the expected length of encoding *n* letters
+
+Then X<sub>n</sub> = *n* (3Pr[A] + 3Pr[B] + 3Pr[C] + 3Pr[D] + 3Pr[E])
+
+= n (3(0.3) + 3(0.3) + 3(0.2) + 3(0.1) + 3(0.1))
+
+= 3n
+
+We now evaluate using the same probability distribution, but a different encoding length:
+
+A => 0
+
+B => 10 
+
+C => 110
+
+D => 1110
+
+E => 1111
+
+We will set up the following scheme:
+
+A : 0 : A.length = 1 : Pr[A] = 0.3
+
+B : 10 : B.length = 2 : Pr[B] = 0.3
+
+C : 110 : C.length = 3 : Pr[C] = 0.2
+
+D : 1110 : D.length = 4 : Pr[D] = 0.1
+
+E : 1111 : E.length = 5 : Pr[E] = 0.1
+
+Again we let X<sub>n</sub> be the expected length of encoding *n* letters...
+
+X<sub>n</sub> = *n* (0.3 + 2(0.3) + 3(0.2) + 4(0.1) + 4(0.1))
+
+= 2.3*n*
+
+For the final encoding we use the same encoding length, but the probability distribution has changed to...
+
+Pr[A] = 0.5 ; Pr[B] = 0.2 ; Pr[C] = 0.2 ; Pr[D] = 0.05 ; Pr[E] = 0.05
+
+With this scheme we have the equation...
+
+*n* (0.3 + 2(0.3) + 3(0.2) + 4(0.05) + 4(0.05))
+
+= 1.9*n*
+
+### Hashing with Chaining
+
+We now consider a hash table with *m* slots that uses chaining for collision resolution.
+With the table initially empty, we will find the probability that a chain of size *k* exists
+after *k* insertions.
+
+##### Proof: 
+
+X<sub>k</sub> = After *k* keys, there is a chain of size *k*
+
+= I { *k* *h*( *k* ) = n } , where *n* is some slot in the table.
+
+The probability of a key mapping to some slot is 1 / *m*.  The following *k* - 1 keys must
+also map to the same slot. 
+
+&#8756; X<sub>k</sub> = 1 / *m*<sup>k - 1</sup> 
+
