@@ -16,7 +16,7 @@
 * [Problem Set 04](#problem-set-04)
   * [Master Method](#master-method)
   * [Substitution](#substitution)
-  * [Binary Search Tree Proof](#binary-search-tree-proof)
+  * [More Fun with Binary Search Trees](#more-fun-with-binary-search-trees)
   
 This is a collection of course work, mostly consisting of problems taken from the CLRS MIT Press
 textbook.  The algorithms course was completed in December of 2018.  This repository is a 
@@ -675,7 +675,8 @@ So, *f* (*n*) = O (n<sup>log<sub>3</sub>7 - &#949;</sup>) for some constant &#94
 [Back to Top](#table-of-contents)
 
 Here, we will use the above result from the relation...
-**T(*n*) = 7 T( *n* / 3 ) + *n*** as our guess.
+
+**T(*n*) = 7 T( *n* / 3 ) + *n***
 
 Guess: T(*n*) = &#920;( n<sup>log<sub>3</sub>7</sup> )
 
@@ -700,7 +701,137 @@ Thus when *d* = 1 our inequality holds.
 
 QED
 
-### Binary Search Tree Proof
+### More Fun with Binary Search Trees
 [Back to Top](#table-of-contents)
 
+#### Lemmas
+The lemma to be proven:
+
+If a node X in a binary search tree has two children, then its successor S has no left
+child and its predecessor P has no right child.
+ 
+##### Claim: 
+The successor S cannot be an ancestor or cousin of X
+
+##### Proof:
+Suppose that the successor S is an ancestor or cousin of X.
+
+S, the successor is an ancestor, but S must also reside in the minimum of X's right subtree.
+Surely this is impossible!  Consider now that S is a cousin of X, which means it resides at 
+the same level with a different parent.  However, this implies X and S and not separated
+by an intermediate node because S is X's successor, but two nodes that are cousins are surely
+separated by a common ancestor above the parent!
+
+&#8756;	our hypothesis is a contradiction.
+
+##### Claim:
+if X has two children, the successor S must then be contained in it's right sub tree such 
+that the successor is the key with th minimum value.
+
+##### Proof:
+Suppose not, that is suppose X's successor is not located at the minimum of X's right
+subtree.  There are only two other positions then: S is the parent of X, or S is somewhere in
+X's left subtree.
+
+Case 1: S is the parent of X.  We know that X has two children. So then S would be a
+successor to multiple nodes, surely this contradicts the structure of a binary search tree.
+
+Case 2: S is somewhere in X's left subtree.  If this were the case then S would both precede
+and succeed X, but this is impossible!
+
+&#8756;	our negated hypothesis is a contradiction.
+
+##### Claim:
+S cannot have a left child.
+
+##### Proof:
+Again, suppose not.  That is, suppose S does have a left child.  We showed
+before that S is the minimum of X's right sub tree.  If S has a left child that child is 
+the minimum or else contains the minimum, but if S is the successor then it is 
+also the minimum. This is impossible! There is only one minimum!
+
+QED
+
+#### Deletion
+[Back to Top](#table-of-contents)
+
+The pseudocode for Tree-Delete (pg.298 CLRS)
+
+```asp
+TREE-DELETE(T, z) 
+  if z.left == NIL
+    Transplant(T, z, z.right)
+  else if z.right == NIL
+    Transplant(T, z, z.left)
+  else
+    y = Tree_Minimum(z.right)
+    if y.p != Z
+      Transplant(T, y, y.right)
+      y.right = z.right
+      y.right.p = y
+    Transplant(T, z, y)
+    y.left = z.left
+    y.left.p = y  
+```
+
+The above pseudocode relies on the logic of the above lemma when finding the successor node to 
+replace the deleted node in the event that the right sub tree is not NULL.
+
+The following is a modification of the foregoing code using the predecessor rather than the
+successor...
+
+```asp
+TREE-DELETE(T, z) 
+  if z.left == NIL
+    Transplant(T, z, z.right)
+  else if z.right == NIL
+    Transplant(T, z, z.left)
+  else
+    y = Tree_Minimum(z.left)
+    if y.p != Z
+      Transplant(T, y, y.left)
+      y.left = z.left
+      y.left.p = y
+    Transplant(T, z, y)
+    y.right = z.right
+    y.right.p = y  
+```
+
+As one can easily see, the symmetry of the binary tree structure also us to take a 'mirror image,'
+so to speak.
+
+#### Constructing Balanced Trees
+[Back to Top](#table-of-contents)
+
+Binary trees can become linear if special care is not taken in regard to how a particular 
+implementation of the tree is built.  We focus on *balance* here.  That is, we recursively define a 
+balanced binary tree with balanced binary sub trees.  Here we assume a sorted array is passed as
+the actual parameter.
+
+```asp
+BalancedBinaryTree(A, start, end)
+  if start > end
+    return NIL
+    
+  middle = floor((start + end) / 2)
+  node = A[middle]
+  
+  node.left = BalancedBinaryTree(A, start, middle - 1)
+  node.right = BalancedBinaryTree(A, middle + 1, end)
+  
+  return node
+```
+
+The two recurrence calls in the above code split the problem in to two parts.
+Each subsequent problem is half the size of the array passed as the parameter.
+A constant cost at each level of recursion is required to compute the middle
+variable and assign pointers between nodes.
+
+Thus we have T(*n*) = 2 T( *n* / 2 ) + *c* 
+
+The recursion is obviously dominated by the leaves...
+
+*c* = O ( *n*<sup>lg 2 - &#949;</sup> ) where &#949; = 1
+
+&#8756;	T(*n*) = &#920;(*n*) by case 1 of the Master Theorem 
 
