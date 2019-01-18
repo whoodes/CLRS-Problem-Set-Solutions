@@ -17,6 +17,8 @@
   * [Master Method](#master-method)
   * [Substitution](#substitution)
   * [More Fun with Binary Search Trees](#more-fun-with-binary-search-trees)
+* [Problem Set 05](#problem-set-05)
+  * [D-Ary Heaps](#d-ary-heaps)
   
 This is a collection of course work, mostly consisting of problems taken from the CLRS MIT Press
 textbook.  The algorithms course was completed in December of 2018.  This repository is a 
@@ -835,3 +837,16 @@ The recursion is obviously dominated by the leaves...
 
 &#8756;	T(*n*) = &#920;(*n*) by case 1 of the Master Theorem 
 
+## Problem Set 05
+[Back to Top](#table-of-contents)
+
+Things are picking up momentum and getting a bit more interesting in problem set 05.  We'll
+be taking an in-depth look into d-ary heaps.  This will include diving into a height analysis,
+along with implementations of *Extract_Max* and *Insert*, with corresponding analyses for each.
+
+We then pay a small homage to Dijkstra with an implementation of a *3_Way_Quicksort*.  A powerful
+approach in the respect that such an algorithm addresses the slight weakness Quicksort has when 
+it comes to sorted, reverse sorted, or nearly sorted inputs.
+
+#### D-Ary Heaps
+(Coming soon!)
