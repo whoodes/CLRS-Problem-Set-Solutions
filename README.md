@@ -849,4 +849,17 @@ approach in the respect that such an algorithm addresses the slight weakness Qui
 it comes to sorted, reverse sorted, or nearly sorted inputs.
 
 #### D-Ary Heaps
-(Coming soon!)
+To start things off, let's take a look at how one would represent a d-ary heap in an array.
+We can accomplish this by verifying the following two formulas:
+
+*j<sup>th</sup>*-*child* ( *i*, *j* ) = *d* ( *i* - 1 ) + *j* + 1
+
+*D_Ary_Parent* ( *i* ) = *floor* ( ( *i* - 2 ) / *d* ) + 1
+
+We will verify by way of a kind of inverse identity...
+
+##### Claim:
+*D_Ary_Parent* ( *j<sup>th</sup>*-*child* ( *i*, *j* ) ) = *i*
+
+##### Proof:
+(*Coming soon!*)
