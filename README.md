@@ -1084,4 +1084,21 @@ Our goal has been achieved!
 #### Red Black Trees
 [Back to Top](#table-of-contents)
 
+Everyone's favorite! ...Anyway, we are going to take an in-depth look into
+the CLRS code for deletion.  We will first take a look at a deletion that
+results in a fairly 'quick fix,' then move on to a bit more complex scenario.  
+For each *RB_Delete* call we will state the property that is violated, as 
+well as the case, in both the CLRS + Goodrich & Tamassia texts, that 
+occurs at each state of the fix-up process.
+
+We will be working with the following tree for each individual call to *RB_Delete*, i.e.,
+the second call doesn't work off the result of the first...
+
 <img class="image" src="/images/3-a-md.png" />
+<br>
+<br>
+
+We will work through deleting the root node where key-value = 2...
+
+<img class="image" src="/images/3-b-md.png" />
+<br>
