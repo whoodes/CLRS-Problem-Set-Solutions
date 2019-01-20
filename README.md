@@ -19,6 +19,7 @@
   * [More Fun with Binary Search Trees](#more-fun-with-binary-search-trees)
 * [Problem Set 05](#problem-set-05)
   * [D-Ary Heaps](#d-ary-heaps)
+  * [3 Way Quicksort](#3-way-quicksort)
   
 This is a collection of course work, mostly consisting of problems taken from the CLRS MIT Press
 textbook.  The algorithms course was completed in December of 2018.  This repository is a 
@@ -845,7 +846,7 @@ be taking an in-depth look into d-ary heaps.  This will include diving into a he
 along with implementations of *Extract_Max* and *Insert*, with corresponding analyses for each.
 
 We then pay a small homage to Dijkstra with an implementation of a *3_Way_Quicksort*.  A powerful
-approach in the respect that such an algorithm addresses the slight weakness Quicksort has when 
+approach in the respect that such an algorithm addresses the weakness Quicksort has when 
 it comes to sorted, reverse sorted, or nearly sorted inputs.
 
 ### D-Ary Heaps
@@ -876,6 +877,7 @@ QED
 
 #### Height of a d-ary heap
 [Back to Top](#table-of-contents)
+
 The number of nodes in a completely filled *i* <sup>th</sup> level of some d-ary heap
 would of course be *d <sup>i</sup>*.  Let us agree that the last filled level is the
 *k <sup>th</sup>* level.  The number of nodes must then be the sum from level 0 to level
@@ -931,5 +933,68 @@ Using the change of base formula this can be seen as...
 &#920;	( *lg* ( *nd* ) )
 
 QED
+
+#### Extract_Max
+[Back to Top](#table-of-contents)
+
+To implement extract max on a d-ary heap would remain the same as an implementation
+on a binary heap, except for an alteration to the *Max_Heapify* sub-routine.  The code
+would be altered to simply find the largest element *j*, such that...
+
+*j* = *max* ( A[ *i* ], the children of A[ *i* ] )
+
+Therefore each node is compared to it's *d* children
+```asp
+for j = 1 to d 
+  max = A[i]
+  if A[j] > A[i]
+    max = A[j]
+return max
+```
+
+This results in *Extract_Max*'s run-time being &#920; ( *d lgn* )
+
+#### Insert
+This particular implementation would also remain the same as a binary heap.  That is,
+the key would be inserted at the last position of the heap, then the *Heap_Increase_Key*
+sub-routine would be called on the newly inserted key.  If a key were greater than the
+parent, then it is also surely greater than it's siblings.  Thus the implementation does
+not change.  The key is swapped with it's corresponding parent until the correct position
+in the heap is found.  In the worst case the new key belongs at the root.
+
+&#8756; *Insert* = &#920; ( *h* )
+
+= &#920; ( *lg* ( *nd* ) )
+
+### 3 Way Quicksort
+[Back to Top](#table-of-contents)
+
+See also [Dutch National Flag Problem](https://en.wikipedia.org/wiki/Dutch_national_flag_problem)
+
+Here is a recursive implementation written in python...
+```asp
+def 3_Way_Partition(A, p, r):
+  e, g, q = p, r, A[r] 
+  i = e
+  
+  while i < r:
+    if A[i] < q:
+      A[i], A[e] = A[e], A[i]
+      e += 1
+    elif A[i] > q:
+      A[i], A[g] = A[g], A[i]
+      g -= 1
+      i -= 1
+    i += 1
+  return e, g
+  
+def 3_Way_Quicksort(A, p, r):
+  if p < r:
+    e, g = 3_Way_Partition
+    3_Way_Quicksort(A, p, e - 1)
+    3_Way_Quicksort(A, g + 1, r)
+```
+
+(*Analysis coming soon!*)
 
 
