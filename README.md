@@ -20,6 +20,9 @@
 * [Problem Set 05](#problem-set-05)
   * [D-Ary Heaps](#d-ary-heaps)
   * [3 Way Quicksort](#3-way-quicksort)
+* [Problem Set 06](#problem-set-06)
+  * [Sorting Large Numbers](#sorting-large-numbers)
+  * [Red Black Trees](#red-black-trees)
   
 This is a collection of course work, mostly consisting of problems taken from the CLRS MIT Press
 textbook.  The algorithms course was completed in December of 2018.  This repository is a 
@@ -995,6 +998,90 @@ def 3_Way_Quicksort(A, p, r):
     3_Way_Quicksort(A, g + 1, r)
 ```
 
-(*Analysis coming soon!*)
+If we assume a balanced partitioning of *3_Way_Quicksort*, we still have 2 
+sub-problems each half the size of the original.  For random valued keys as the
+partition A[ *e*..*g* ] could be empty with a high probability.
+
+Thus, T( *n* ) = 2 T ( *n* / 2 ) + &#920; ( *n* )
+
+= &#920; ( *n lgn* ) by the Master Theorem
+
+Now in the case of *n* identical items, *3_Way_Partition* is adaptive as it will 
+iterate over the *n* elements only one time.  By doing this it creates a partition
+where *p* = *e* and *g* = *r*.  In other words, the conditional base case of the 
+recursion is true for a single call to *3_Way_Quicksort*, namely the initial call. 
+
+T( *n* ) = 0 T ( *n* / 2 ) + &#920; ( *n* )
+
+= &#920; ( *n* )
+
+QED
+
+### Problem Set 06
+[Back to Top](#table-of-contents)
+
+We have past the half way point and find ourselves dealing with ways to escape the clutches
+of O(*nlgn*) comparison based sorting.  After that, we work with red-black trees and they're
+equivalent (2, 4) representations.
+
+#### Sorting Large Numbers
+What we are faced with is the task of sorting *n* integers in the range of 0 to 
+*n* <sup>4</sup> - 1 in O( *n* ) time.
+
+Let's look at *Counting_Sort* as an option...
+
+From CLRS (pg. 195)
+```asp
+Counting_Sort(A, b, k)
+  let C[0..k] be a new array
+  for i = 0 to k
+    C[i] = 0
+  for j = 1 to A.length
+    C[A[j]] = C[A[j]] + 1
+.
+.
+.
+```
+We need only examine the first for loop to see that *Counting_Sort* does not accomplish our goal.
+The loop iterates *i* = 0 to *k*, menaing &#920;( *k* ) time.  The overall time remains as 
+&#920;( *n* + *k* ), but *k* = *n* <sup>4</sup> - 1.
+
+Thus the best run time that *Counting_Sort* can achieve is &#920;( *n* <sup>4</sup> ).  Which
+certainly does not achieve our goal of a linear sorting time.
+
+Let's instead take a look into *Radix_Sort*...
+
+From CLRS (pg. 198)
+```asp
+Radix_Sort(A, d)
+  for i = 1 to d
+    use a stable sort to sort array A on digit i
+```
+Again, our problem consists of *n* integers ranging in values from 0 to *n* <sup>4</sup> - 1.
+Then we have *d* = log<sub>k</sub>( *n* ) digits.  In the worst case *d* is not constant and thus
+with base-10 counting, *k* is in the domain [0, 9].
+
+*Radix_Sort* = &#920; ( log<sub>k</sub>( *n* )( *n* + 10) )
+
+= &#920;( *n lgn* )
+
+We need to make a slight change to our representation of the integers comprising our array
+if we wish to achieve escape velocity, if you will, from the &#920;( *n lgn* ) bound.
+
+The issue with an unmodified *Radix_Sort* is the logarithmic term corresponding to the amount
+of digits to loop through.  In the foregoing attempt we used base-10 digits, thus *k* = 10.
+and *d* = log<sub>k</sub>( *n* ).  Instead, if we let *k* = *n* then our *n* integers are
+represented as base-*n* giving us...
+
+*Modified_Radix_Sort* = &#920;( log<sub>n</sub>( *n* )( *n* + *n*) )
+
+= &#920;( 2*n*)
+
+= &#920;( *n* )
+
+Our goal has been achieved!
+
+#### Red Black Trees
+[Back to Top](#table-of-contents)
 
 
