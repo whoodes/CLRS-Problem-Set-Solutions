@@ -1017,14 +1017,14 @@ T( *n* ) = 0 T ( *n* / 2 ) + &#920; ( *n* )
 
 QED
 
-### Problem Set 06
+## Problem Set 06
 [Back to Top](#table-of-contents)
 
 We have past the half way point and find ourselves dealing with ways to escape the clutches
 of O(*nlgn*) comparison based sorting.  After that, we work with red-black trees and they're
 equivalent (2, 4) representations.
 
-#### Sorting Large Numbers
+### Sorting Large Numbers
 What we are faced with is the task of sorting *n* integers in the range of 0 to 
 *n* <sup>4</sup> - 1 in O( *n* ) time.
 
@@ -1081,7 +1081,7 @@ represented as base-*n* giving us...
 
 Our goal has been achieved!
 
-#### Red Black Trees
+### Red Black Trees
 [Back to Top](#table-of-contents)
 
 Everyone's favorite! ...Anyway, we are going to take an in-depth look into
@@ -1096,9 +1096,18 @@ the second call doesn't work off the result of the first...
 
 <img class="image" src="/images/3-a-md.png" />
 <br>
-<br>
 
 We will work through deleting the root node where key-value = 2...
 
 <img class="image" src="/images/3-b-md.png" />
 <br>
+
+We will now delete the node with key-value = 1...
+
+<img class="image" src="/images/3-c-md.png" />
+<br>
+
+#### Height of a Red Black Tree
+[Back to Top](#table-of-contents)
+
+
