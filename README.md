@@ -848,7 +848,7 @@ We then pay a small homage to Dijkstra with an implementation of a *3_Way_Quicks
 approach in the respect that such an algorithm addresses the slight weakness Quicksort has when 
 it comes to sorted, reverse sorted, or nearly sorted inputs.
 
-#### D-Ary Heaps
+### D-Ary Heaps
 To start things off, let's take a look at how one would represent a d-ary heap in an array.
 We can accomplish this by verifying the following two formulas:
 
@@ -862,4 +862,74 @@ We will verify by way of a kind of inverse identity...
 *D_Ary_Parent* ( *j<sup>th</sup>*-*child* ( *i*, *j* ) ) = *i*
 
 ##### Proof:
-(*Coming soon!*)
+Let us assume we are considering the first child so that *j* = 1
+
+*floor* ( [ *d* ( *i* - 1 ) + 1 + 1 - 2 ] / *d* ) + 1 = *i*
+
+= [ *d* ( *i* - 1 ) ] / *d* + 1
+
+= *i* - 1 + 1
+
+= *i*
+
+QED
+
+#### Height of a d-ary heap
+[Back to Top](#table-of-contents)
+The number of nodes in a completely filled *i* <sup>th</sup> level of some d-ary heap
+would of course be *d <sup>i</sup>*.  Let us agree that the last filled level is the
+*k <sup>th</sup>* level.  The number of nodes must then be the sum from level 0 to level
+*k*.
+
+Or, *d <sup>0</sup> + d <sup>1</sup> + d <sup>2</sup> + ... + d <sup>k</sup>*
+
+<img src="https://latex.codecogs.com/gif.latex?=&space;\sum_{i=0}^{k}&space;d^i" title="= \sum_{i=0}^{k} d^i" />
+<br/>
+<br/>
+Which is of course the simple geometric series...
+<br>
+<br>
+<img src="https://latex.codecogs.com/gif.latex?=\frac{d^{k+1}-1}{d-1}" title="=\frac{d^{k+1}-1}{d-1}" />
+<br>
+<br>
+
+The last node must reside in the filled level, or else it exists in the succeeding partially
+filled level, *k* + 1.
+
+Our final node, let's call it *n*, can be represented with the following inequality...
+
+<br>
+<img src="https://latex.codecogs.com/gif.latex?\frac{d^{k&plus;1}-1}{d-1}&space;\leq&space;n<&space;\frac{d^{k&plus;2}-1}{d-1}" title="\frac{d^{k+1}-1}{d-1} \leq n< \frac{d^{k+2}-1}{d-1}" />
+<br>
+<br>
+<br>
+<img src="https://latex.codecogs.com/gif.latex?d^{k&plus;1}-1\leq&space;n(d-1)<&space;d^{k&plus;2}-1" title="d^{k+1}-1\leq n(d-1)< d^{k+2}-1" />
+<br>
+<br>
+<br>
+<img src="https://latex.codecogs.com/gif.latex?d^{k&plus;1}\leq&space;n(d-1)&plus;1<&space;d^{k&plus;2}" title="d^{k+1}\leq n(d-1)+1< d^{k+2}" />
+<br>
+<br>
+<br>
+<img src="https://latex.codecogs.com/gif.latex?k&plus;1\leq&space;log_d(n(d-1)&plus;1)<&space;k&plus;2" title="k+1\leq log_d(n(d-1)+1)< k+2" />
+<br>
+<br>
+<br>
+<img src="https://latex.codecogs.com/gif.latex?k\leq&space;log_d(n(d-1)&plus;1)-1<&space;k&plus;1" title="k\leq log_d(n(d-1)+1)-1< k+1" />
+<br>
+<br>
+
+The inequality holds for *k*, but in the case of a partial level we would take the ceiling
+of the logarithm because at least *k* + 1 levels are needed as levels are discrete.
+
+&#8756;	The height of a d-ary heap of *n* elements is...
+
+&#8968; log<sub>d</sub> ( *n* ( *d* - 1 ) + 1 ) &#8969; - 1
+
+Using the change of base formula this can be seen as...
+
+&#920;	( *lg* ( *nd* ) )
+
+QED
+
+
