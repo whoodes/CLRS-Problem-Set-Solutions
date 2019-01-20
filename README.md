@@ -1084,4 +1084,4 @@ Our goal has been achieved!
 #### Red Black Trees
 [Back to Top](#table-of-contents)
 
-<img class="image" src="https://github.com/whoodes/whoodes.github.io/blob/master/images/%233-a-md.png" />
+<img class="image" src="/images/3-a-md.png" />
