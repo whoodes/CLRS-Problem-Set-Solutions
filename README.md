@@ -589,7 +589,7 @@ With this scheme we have the equation...
 = 1.9*n*
 
 ### Hashing with Chaining
-[Back top Top](#table-of-contents)
+[Back to Top](#table-of-contents)
 
 We now consider a hash table with *m* slots that uses chaining for collision resolution.
 With the table initially empty, we will find the probability that a chain of size *k* exists
@@ -613,14 +613,14 @@ section will be somewhat bare...*
 (*coming soon! Again with the aesthetics...*)
 
 ## Problem Set 04
-[Back top Top](#table-of-contents)
+[Back to Top](#table-of-contents)
 
 In this problem set we will tackle a few recurrence relations using the Master
 Method.  For one of those relations, we will use our findings from the MM to
 use as our guess within the substitution method.  Where will see that 
 sometimes less really is more!
 
-After, we'll take deeper look into binary search trees. We will first prove
+After, we'll take a deeper look into binary search trees. We will first prove
 a basic lemma by showing that the individual parts are true.  Then we'll run
 through an exercise in modifying a deletion algorithm.  Finishing up with an 
 algorithm to construct a balanced binary search tree along with a time
@@ -1157,4 +1157,56 @@ QED
 ## Problem set 07
 [Back to Top](#table-of-contents)
 
-We now enter the wonderful world of dynamic programming!
+We now enter the wonderful world of graph! In this set we will be focusing on the 
+exciting concepts of dynamic programming!
+
+To start off we will write code in javascript for the longest path through a graph that stores both
+the value and the path.  We will then write a function to print the path...
+
+```javascript
+/* Assume all values in next are initialized to 1 by the caller */
+
+function Longest_Path_Memoized (G, u, t, dist, next) {
+  if (u == t) {
+    dist[u] == 0
+    next[u] == u
+    return (dist, next)
+  }
+  
+  if (dist[u] > -infinity) {
+    return (dist[u], next[u])
+  } else {
+    G.adj[u].forEach(function (v) {
+      let alt = w(u, v) + Longest_Path_Memoized (G, v, t, dist, next)
+      if (dist[u] < alt) {
+        dist[u] = alt
+        next[u] = v
+      }
+    })
+    return (dist[u], next[u])
+  }
+  
+  function Print_Longest_Path (u, t, next) {
+    let temp = u
+    print(temp)
+    while (temp != t) {
+      print('-> ' + next[temp])
+      temp = next[temp]
+    }
+  }
+}
+```
+
+#### Analysis
+All entries of *next* and *dist* must be initialized, so this affects the run time of 
+Longest_Path_Memoized by O( *V* ).  Each sub-problem represented by a node is solved once
+due to memoization.  Therefore the dominating cost of the algorithm exists in the forEach loop
+comparing adjacent edges of each node along the longest path, or O( *E* ).  The printing routine 
+has to, in the worst case, iterate over an array that contains all of the nodes in the graph
+*G*.  Thus the combined run-time of both algorithms is...
+ 
+ O( *E* + *V* + *V* )
+ 
+ = O( *E* + 2*V* )
+ 
+ = O( *E* + *V* )
