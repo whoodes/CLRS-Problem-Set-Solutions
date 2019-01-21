@@ -1167,9 +1167,9 @@ the value and the path.  We will then write a function to print the path...
 /* Assume all values in next are initialized to 1 by the caller */
 
 function Longest_Path_Memoized (G, u, t, dist, next) {
-  if (u == t) {
-    dist[u] == 0
-    next[u] == u
+  if (u === t) {
+    dist[u] = 0
+    next[u] = u
     return (dist, next)
   }
   
@@ -1189,7 +1189,7 @@ function Longest_Path_Memoized (G, u, t, dist, next) {
   function Print_Longest_Path (u, t, next) {
     let temp = u
     print(temp)
-    while (temp != t) {
+    while (temp !== t) {
       print('-> ' + next[temp])
       temp = next[temp]
     }
