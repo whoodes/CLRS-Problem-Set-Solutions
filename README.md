@@ -23,6 +23,7 @@
 * [Problem Set 06](#problem-set-06)
   * [Sorting Large Numbers](#sorting-large-numbers)
   * [Red Black Trees](#red-black-trees)
+* [Problem Set 07](#problem-set-07)
   
 This is a collection of course work, mostly consisting of problems taken from the CLRS MIT Press
 textbook.  The algorithms course was completed in December of 2018.  This repository is a 
@@ -1110,4 +1111,50 @@ We will now delete the node with key-value = 1...
 #### Height of a Red Black Tree
 [Back to Top](#table-of-contents)
 
+Let's determine the largest number of internal nodes possible on a red black tree of black height 
+*k*, as well as the smallest.  Also, what the corresponding 2-4 tree heights would be. 
 
+A path from the root to leaf can have at most one red node between every black node, so twice the
+number of black nodes plus the bottommost red node...
+
+*h* = 2*k* + 1
+
+A complete tree would maximize the internal nodes as...
+
+*n* = 2<sup>h</sup> - 1
+
+= 2<sup>2*k* + 1</sup> - 1
+
+For a complete red black tree, the 2-4 hieght is simply the black height as every node is
+absorbed by the black parent..
+
+2-4 height = *k*
+
+The least number of internal nodes occurs when the tree is black as a raven's feather...
+
+*k* + 1 = *lg* ( *n* + 1 )
+
+2<sup>*k* + 1</sup> = *n* + 1
+
+*n* = 2<sup>*k* + 1</sup> - 1
+
+Again the 2-4 height = *k*
+
+Will the tree ever be black as a raven's feather with the CLRS implementation?  Let us see...
+
+##### Claim:
+if *n* > 1, the tree has at least one red node.
+
+##### Proof:
+If a node *z* is inserted and ends up at the bottom of the tree it is colored red in line 16, 
+*Insert_Fix-up* is called regardless.  In all cases, 1, 2 & 3, if the black depth or
+root properties are violated, node colors must be changed.  *z* remains red, but the ancestors 
+of *z* undergo color manipulation.  Ensuring that if *n* > 1, then one node must certainly be
+red after insert, that particular node being *z* itself.
+
+QED
+
+## Problem set 07
+[Back to Top](#table-of-contents)
+
+We now enter the wonderful world of dynamic programming!
