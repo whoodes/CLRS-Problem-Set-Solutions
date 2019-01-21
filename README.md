@@ -25,6 +25,8 @@
   * [Red Black Trees](#red-black-trees)
 * [Problem Set 07](#problem-set-07)
   * [Dynamic Programming](#dynamic-programming)
+    * [Longest Paths](#longest-paths)
+    * [Activity Scheduling](#activity-scheduling)
   
 This is a collection of course work, mostly consisting of problems taken from the CLRS MIT Press
 textbook.  The algorithms course was completed in December of 2018.  This repository is a 
@@ -1235,3 +1237,48 @@ is an optimal solution.  Similarly for S<sub>kj</sub>.
 A recurrence relation can be defined by the following...
 
 <img class="image" src="/images/dp-recur.png" />
+<br>
+
+Below is pythonic pseudocode implementing our dynamic approach...
+
+```asp
+def Activity_Revenue_Optimizer (n, s, f, v):
+  val = [0 ... n + 1, 0 ... n + 1]
+  activity = [0 ...  n + 1, 0 ... n + 1]
+  
+  for i in range(0, n):
+    val[i, i] = 0
+    val[i, i + 1] = 0
+  val[n + 1, n + 1] = 0
+  
+  for i in range(2, n + 1):
+    for j in range(0, n - i + 1):
+      k = j + i
+      val[j, k] = 0
+      l = k - 1
+      while (f[j] < f[l]):
+        if (f[j] <= s[l] and f[l] <= s[k] and 
+            val[j, l] + val[l, k] + v[l] > val[j, k]):
+              val[j, k] = val[j, l] + val[l, k] + v[l]
+              activity[j, k] = l
+        l -= 1
+  return (val, activity)
+```
+
+It would be useful to see a print out of the activities...
+
+```asp
+def Print_Activities (val, activity, i, j):
+  if (val[i, j] > 0):
+    k = activity[i, j]
+    print(k)
+    Print_Activities (val, activity, i, k)
+    Print_Activities (val, activity, k + 1, j)
+```
+
+##### Analysis
+Activity_Revenue_Optimizer requires O( *n* <sup>3</sup> ) time to compare some element to
+every other element in a two-dimensional array.
+
+Print_Activities is, in the worst case, O( *n* ) if all activities are compatible and thus
+require printing.
