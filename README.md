@@ -1161,7 +1161,7 @@ QED
 [Back to Top](#table-of-contents)
 
 ### Dynamic Programming
-We now enter the wonderful world of graph! In this set we will be focusing on the 
+We now enter the wonderful world of graphs! In this set we will be focusing on the 
 exciting concepts of dynamic programming!
 
 #### Longest Paths
