@@ -1163,7 +1163,7 @@ exciting concepts of dynamic programming!
 To start off we will write code in javascript for the longest path through a graph that stores both
 the value and the path.  We will then write a function to print the path...
 
-```ecmascript 6
+```javascript
 /* Assume all values in next are initialized to 1 by the caller */
 
 function Longest_Path_Memoized (G, u, t, dist, next) {
