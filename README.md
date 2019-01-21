@@ -24,6 +24,7 @@
   * [Sorting Large Numbers](#sorting-large-numbers)
   * [Red Black Trees](#red-black-trees)
 * [Problem Set 07](#problem-set-07)
+  * [Dynamic Programming](#dynamic-programming)
   
 This is a collection of course work, mostly consisting of problems taken from the CLRS MIT Press
 textbook.  The algorithms course was completed in December of 2018.  This repository is a 
@@ -1157,8 +1158,11 @@ QED
 ## Problem set 07
 [Back to Top](#table-of-contents)
 
+### Dynamic Programming
 We now enter the wonderful world of graph! In this set we will be focusing on the 
 exciting concepts of dynamic programming!
+
+#### Longest Paths
 
 To start off we will write code in javascript for the longest path through a graph that stores both
 the value and the path.  We will then write a function to print the path...
@@ -1197,7 +1201,7 @@ function Longest_Path_Memoized (G, u, t, dist, next) {
 }
 ```
 
-#### Analysis
+##### Analysis
 All entries of *next* and *dist* must be initialized, so this affects the run time of 
 Longest_Path_Memoized by O( *V* ).  Each sub-problem represented by a node is solved once
 due to memoization.  Therefore the dominating cost of the algorithm exists in the forEach loop
@@ -1210,3 +1214,24 @@ has to, in the worst case, iterate over an array that contains all of the nodes 
  = O( *E* + 2*V* )
  
  = O( *E* + *V* )
+
+#### Activity Scheduling
+When scheduling activities, the greedy approach of taking the earliest compatible finish time
+works absolutely fine when maximizing the number of elements in a sequence of activities.
+The locally optimized choice corresponds to global optimization as well.  In this problem,
+we look at activity revenue optimization which causes the greedy approach to break down.
+First, we'll describe the optimal substructure of the problem, a mathematical recurrence relation,
+and finally implement the solution using dynamic programming.
+
+##### Optimal Substructure
+The optimal solution A<sub>ij</sub> must also include the optimal solitions to two problems for
+S<sub>ik</sub> and S<sub>kj</sub>.  If there existed some other set A'<sub>ik</sub> of mutually
+compatible activities in S<sub>ik</sub> where the value of A'<sub>ik</sub> was greater than that
+of A<sub>ik</sub>, then we would use A'<sub>ik</sub> instead of A<sub>ik</sub> as an optimal
+solution to a sub-problem of S<sub>ij</sub>.  This contradicts the assumption that A<sub>ij</sub>
+is an optimal solution.  Similarly for S<sub>kj</sub>.
+
+##### Recurrence
+A recurrence relation can be defined by the following...
+
+<img class="image" src="/images/dp-recur.png" />
